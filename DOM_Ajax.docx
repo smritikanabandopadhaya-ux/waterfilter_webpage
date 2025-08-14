@@ -1,0 +1,174 @@
+﻿
+
+JS Assignment
+
+Topics: DOM, events, Ajax
+
+1. Write a JavaScript program that adds a new item to the list whenever a user inputs a text into the input field and clicks the button.
+<!DOCTYPE html>
+<html>
+<head>
+<title>Add List Item</title>
+</head>
+<body>
+<input type="text" id="itemInput" placeholder="Enter item">
+<button id="addBtn">Add Item</button>
+
+<ul id="itemList"></ul>
+
+<script>
+document.getElementById("addBtn").addEventListener("click", function() {
+    let input = document.getElementById("itemInput");
+    let value = input.value.trim();
+
+    if (value) {
+        let li = document.createElement("li");
+        li.textContent = value;
+        document.getElementById("itemList").appendChild(li);
+        input.value = "";
+    } else {
+        alert("Please enter something!");
+    }
+});
+</script>
+</body>
+</html>
+
+2. Write a JS function to change the font size,bg-color, and font-family for the paragraph in the HTML snippet below on clicking the button.
+	
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>JS DOM paragraph styling</title>
+</head> 
+<body>
+<p id ='text'>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. </p> 
+<div>
+<button id="jsstyle"> Style </button>
+</div>
+  <script>
+    document.getElementById("jsstyle").addEventListener("click",my_fun);
+    function my_fun() {
+    let para = document.getElementById("text");
+    para.style.fontSize = "20px";
+    para.style.backgroundColor = "lightyellow";
+    para.style.fontFamily = "Arial, sans-serif";
+}
+  </script>
+</body>
+</html>
+
+
+
+
+3.Write a JavaScript program that calculates the area of a rectangle when the user inputs the width and height into two input fields and clicks a button.
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rectangle Area</title>
+  </head>
+  <body>
+    <input type="number" id="width" placeholder="Width" />
+    <input type="number" id="height" placeholder="Height" />
+    <button id="calcBtn">Calculate Area</button>
+    <p id="result"></p>
+
+    <script>
+      document.getElementById("calcBtn").addEventListener("click", my_fun);
+      function my_fun() {
+        let width = parseInt(document.getElementById("width").value);
+        let height = parseInt(document.getElementById("height").value);
+
+        if (!isNaN(width) && !isNaN(height)) {
+          let area = width * height;
+          document.getElementById("result").textContent = "Area: " + area;
+        } else {
+          alert("Please enter valid numbers.");
+        }
+      }
+    </script>
+  </body>
+</html>
+
+4.Write a JavaScript program that displays an alert message to the user when they submit a form.
+<!DOCTYPE html>
+<html>
+<head>
+<title>Form Alert</title>
+</head>
+<body>
+<form id="myForm">
+    <input type="text" placeholder="Enter name" required>
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+document.getElementById("myForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent form from submitting
+    alert("Form submitted successfully!");
+});
+</script>
+</body>
+</html>
+
+5.Write a JavaScript program that displays an alert message to the user when they resize the browser window.
+
+<script>
+  window.addEventListener("resize", function () {
+    alert("Browser window resized!");
+  });
+</script>
+
+
+6.Write a JavaScript program that uses AJAX to fetch and display data from a text file when the user clicks on a button.
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Fetch Text File</title>
+</head>
+<body>
+<button id="fetchBtn">Fetch Data</button>
+<p id="output"></p>
+
+<script>
+document.getElementById("fetchBtn").addEventListener("click", function() {
+    fetch("data.txt")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("output").textContent = data;
+        })
+        .catch(error => console.error("Error:", error));
+});
+</script>
+</body>
+</html>
+
+7.Write a JavaScript program that uses AJAX to fetch and display an image from an API when the user clicks on a button.
+<!DOCTYPE html>
+<html>
+<head>
+<title>Fetch Image</title>
+</head>
+<body>
+<button id="imgBtn">Fetch Image</button>
+<div id="imgContainer"></div>
+
+<script>
+document.getElementById("imgBtn").addEventListener("click", function() {
+    fetch("https://picsum.photos/300/200")
+        .then(response => {
+            document.getElementById("imgContainer").innerHTML = `<img src="${response.url}" alt="Random Image">`;
+        })
+        .catch(error => console.error("Error:", error));
+});
+</script>
+</body>
+</html>
+
+
+   
+
+
